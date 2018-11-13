@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.wkyc</groupId>
+	<artifactId>member-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>member-service</name>
+	<description>会员服务</description>
+
+	<modules>
+        <module>member-service-api</module>
+        <module>member-service-core</module>
+    </modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+		<relativePath/>
+	</parent>
+
+	<properties>
+		<face-ec.seckill-service-api.version>0.1.0</face-ec.seckill-service-api.version>
+		<face-rocketmq-client.version>0.0.3</face-rocketmq-client.version>
+		<fastjson.version>1.2.30</fastjson.version>
+		<face-business-card-service-api.version>0.0.4</face-business-card-service-api.version>
+		<json-lib.version>2.4</json-lib.version>
+		<face-common.search-service.version>0.2.2</face-common.search-service.version>
+		<face-fishpond-service.version>0.4.8</face-fishpond-service.version>
+		<face-uc.user-center-api.version>0.0.2-SNAPSHOT</face-uc.user-center-api.version>
+		<slcoin.version>0.0.1-SNAPSHOT</slcoin.version>
+		<commons-lang3.version>3.7</commons-lang3.version>
+		<face-shop-service.version>0.4.8</face-shop-service.version>
+		<face-goods-service.version>0.3.1</face-goods-service.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<springframework.version>4.3.9.RELEASE</springframework.version>
+		<mybatis.version>3.4.4</mybatis.version>
+		<jackson.version>2.9.0.pr4</jackson.version>
+		<mysql.version>6.0.6</mysql.version>
+		<mybatis.spring.version>1.3.2</mybatis.spring.version>
+		<junit.version>4.12</junit.version>
+		<logback.classic.version>1.2.3</logback.classic.version>
+		<jcl.over.slf4j.version>1.7.12</jcl.over.slf4j.version>
+		<log4j.over.slf4j.version>1.7.25</log4j.over.slf4j.version>
+		<druid.version>1.1.9</druid.version>
+		<dubbo.version>2.6.2</dubbo.version>
+		<service.check.version>1.0-SNAPSHOT</service.check.version>
+		<javassist.version>3.22.0-GA</javassist.version>
+		<zookeeper.version>3.4.11</zookeeper.version>
+		<zkclient.version>0.10</zkclient.version>
+		<logback.kafka.appender.version>0.1.1-SNAPSHOT</logback.kafka.appender.version>
+		<face.util.version>0.0.24</face.util.version>
+		<face.rocketmq.consumer.version>0.0.1</face.rocketmq.consumer.version>
+		<face.salesOrder.service.version>0.5.1</face.salesOrder.service.version>
+		<docker.image.prefix>wkyc</docker.image.prefix>
+		<rocketmq.version>4.1.0-incubating</rocketmq.version>
+		<myth.version>1.0.0-SNAPSHOT</myth.version>
+		<elk.version>0.2.0-SNAPSHOT</elk.version>
+		<wk.common.version>0.0.1-SNAPSHOT</wk.common.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<redisson.version>2.8.1</redisson.version>
+		<jackson-dataformat-yaml.version>2.7.6</jackson-dataformat-yaml.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- RocketMQ 客户端相关依赖 -->
+			<dependency>
+				<groupId>org.apache.rocketmq</groupId>
+				<artifactId>rocketmq-client</artifactId>
+				<version>${rocketmq.version}</version>
+			</dependency>
+			<!-- mq分布式事务支持 -->
+			<dependency>
+				<groupId>com.github.myth</groupId>
+				<artifactId>myth-core</artifactId>
+				<version>${myth.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.myth</groupId>
+				<artifactId>myth-dubbo</artifactId>
+				<version>${myth.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.myth</groupId>
+				<artifactId>myth-annotation</artifactId>
+				<version>${myth.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.myth</groupId>
+				<artifactId>myth-rocketmq</artifactId>
+				<version>${myth.version}</version>
+			</dependency>
+			<!-- 维客common -->
+			<dependency>
+				<groupId>com.wkyc</groupId>
+				<artifactId>common</artifactId>
+				<version>${wk.common.version}</version>
+			</dependency>
+			<!-- duboo -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+			</dependency>
+			<!-- elk -->
+			<dependency>
+				<groupId>com.github.danielwegener</groupId>
+				<artifactId>logback-kafka-appender</artifactId>
+				<version>${elk.version}</version>
+			</dependency>
+			<!-- alibaba的druid数据库连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis.spring.version}</version>
+			</dependency>
+			<!-- commons -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<!-- redisson -->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${jackson-dataformat-yaml.version}</version>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>jznexus</name>
+			<url>http://192.168.1.123:8081/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>snapshots</id>
+			<name>jznexus</name>
+			<url>http://192.168.1.123:8081/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://192.168.1.123:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>3rd party</id>
+            <url>http://192.168.1.123:8081/nexus/content/repositories/thirdparty/</url>
+        </repository>
+    </distributionManagement>
+	
+</project>

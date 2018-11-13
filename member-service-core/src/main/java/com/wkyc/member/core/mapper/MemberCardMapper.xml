@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkyc.member.core.mapper.MemberCardMapper">
+  <resultMap id="BaseResultMap" type="com.wkyc.member.api.domain.MemberCard">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="price" jdbcType="BIGINT" property="price" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="indate" jdbcType="BIGINT" property="indate" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="good_id" jdbcType="BIGINT" property="goodId" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="is_disable" jdbcType="TINYINT" property="isDisable" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member_card
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wkyc.member.api.domain.MemberCard">
+    insert into member_card (id, name, image,
+    price, remark, indate,
+    level, good_id, is_delete,
+    is_disable, update_time, create_time
+    )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR},
+    #{price,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{indate,jdbcType=BIGINT},
+    #{level,jdbcType=TINYINT}, #{goodId,jdbcType=BIGINT}, #{isDelete,jdbcType=TINYINT},
+    #{isDisable,jdbcType=TINYINT}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wkyc.member.api.domain.MemberCard" keyProperty="id" useGeneratedKeys="true">
+    insert into member_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="indate != null">
+        indate,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="goodId != null">
+        good_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="isDisable != null">
+        is_disable,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="indate != null">
+        #{indate,jdbcType=BIGINT},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="goodId != null">
+        #{goodId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="isDisable != null">
+        #{isDisable,jdbcType=TINYINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.wkyc.member.api.domain.MemberCard">
+    update member_card
+    set name = #{name,jdbcType=VARCHAR},
+    image = #{image,jdbcType=VARCHAR},
+    price = #{price,jdbcType=BIGINT},
+    remark = #{remark,jdbcType=VARCHAR},
+    indate = #{indate,jdbcType=BIGINT},
+    level = #{level,jdbcType=TINYINT},
+    good_id = #{goodId,jdbcType=BIGINT},
+    is_delete = #{isDelete,jdbcType=TINYINT},
+    is_disable = #{isDisable,jdbcType=TINYINT},
+    update_time = #{updateTime,jdbcType=TIMESTAMP},
+    create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wkyc.member.api.domain.MemberCard">
+    update member_card
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="indate != null">
+        indate = #{indate,jdbcType=BIGINT},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="goodId != null">
+        good_id = #{goodId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="isDisable != null">
+        is_disable = #{isDisable,jdbcType=TINYINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, image, price, remark, indate, level, good_id, is_delete, is_disable,
+    update_time, create_time
+    from member_card
+    where id = #{id,jdbcType=BIGINT} AND is_delete = 0
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, image, price, remark, indate, level, good_id, is_delete, is_disable,
+    update_time, create_time
+    from member_card WHERE is_delete = 0
+  </select>
+
+
+
+
+
+
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select id, name, image, price, remark, indate, level, good_id, is_delete, is_disable,
+    update_time, create_time
+    from member_card
+    <where>
+      <if test="isDelete != null">
+        and is_delete = #{isDelete}
+      </if>
+      <if test="isDisable != null">
+        and is_disable = #{isDisable}
+      </if>
+      <if test="goodId != null">
+        and good_id = #{goodId}
+      </if>
+      <if test="name != null">
+        and name = #{name}
+      </if>
+    </where>
+  </select>
+
+
+
+</mapper>

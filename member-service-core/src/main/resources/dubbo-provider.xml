@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans         
+	http://www.springframework.org/schema/beans/spring-beans.xsd         
+	http://code.alibabatech.com/schema/dubbo         
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<dubbo:application name="@projectName@" logger="slf4j"/>
+	<dubbo:registry address="@dubbo.registry.address@" file="@dubbo.registry.file@" client="zkclient"/>
+	<dubbo:protocol charset="UTF-8" name="dubbo" port="@dubbo.protocol.port@"  accesslog="/opt/wgj2/work/member-service/dubbo/access.log" threads="1000"/>
+	<dubbo:monitor protocol="registry"/>
+
+	<dubbo:service interface="com.wkyc.member.api.facade.MemberFacade" ref="memberFacade" version="@dubbo.default.version@" retries="0" />
+</beans>

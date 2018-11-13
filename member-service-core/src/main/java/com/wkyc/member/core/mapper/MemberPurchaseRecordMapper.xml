@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkyc.member.core.mapper.MemberPurchaseRecordMapper">
+  <resultMap id="BaseResultMap" type="com.wkyc.member.api.domain.MemberPurchaseRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_card_id" jdbcType="BIGINT" property="memberCardId" />
+    <result column="member_card_name" jdbcType="VARCHAR" property="memberCardName" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="transaction_serial_number" jdbcType="VARCHAR" property="transactionSerialNumber" />
+    <result column="pay_status" jdbcType="INTEGER" property="payStatus" />
+    <result column="trade_status" jdbcType="INTEGER" property="tradeStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="recommend_user_id" jdbcType="BIGINT" property="recommendUserId" />
+    <result column="recommend_user_name" jdbcType="VARCHAR" property="recommendUserName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, member_card_id, member_card_name, user_id, user_name, user_phone, transaction_serial_number,
+    pay_status, trade_status, update_time, create_time, recommend_user_id, recommend_user_name
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member_purchase_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wkyc.member.api.domain.MemberPurchaseRecord">
+    insert into member_purchase_record (id, member_card_id, member_card_name,
+    user_id, user_name, user_phone,
+    transaction_serial_number, pay_status, trade_status,
+    update_time, create_time)
+    values (#{id,jdbcType=BIGINT}, #{memberCardId,jdbcType=BIGINT}, #{memberCardName,jdbcType=VARCHAR},
+    #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR},
+    #{transactionSerialNumber,jdbcType=VARCHAR}, #{payStatus,jdbcType=INTEGER}, #{tradeStatus,jdbcType=INTEGER},
+    #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wkyc.member.api.domain.MemberPurchaseRecord">
+    insert into member_purchase_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="memberCardId != null">
+        member_card_id,
+      </if>
+      <if test="memberCardName != null">
+        member_card_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="transactionSerialNumber != null">
+        transaction_serial_number,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="tradeStatus != null">
+        trade_status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="recommendUserId != null">
+        recommend_user_id,
+      </if>
+      <if test="recommendUserName != null">
+        recommend_user_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="memberCardId != null">
+        #{memberCardId,jdbcType=BIGINT},
+      </if>
+      <if test="memberCardName != null">
+        #{memberCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionSerialNumber != null">
+        #{transactionSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradeStatus != null">
+        #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommendUserId != null">
+        #{recommendUserId,jdbcType=BIGINT},
+      </if>
+      <if test="recommendUserName != null">
+        #{recommendUserName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.wkyc.member.api.domain.MemberPurchaseRecord">
+    update member_purchase_record
+    set member_card_id = #{memberCardId,jdbcType=BIGINT},
+    member_card_name = #{memberCardName,jdbcType=VARCHAR},
+    user_id = #{userId,jdbcType=BIGINT},
+    user_name = #{userName,jdbcType=VARCHAR},
+    user_phone = #{userPhone,jdbcType=VARCHAR},
+    transaction_serial_number = #{transactionSerialNumber,jdbcType=VARCHAR},
+    pay_status = #{payStatus,jdbcType=INTEGER},
+    trade_status = #{tradeStatus,jdbcType=INTEGER},
+    update_time = #{updateTime,jdbcType=TIMESTAMP},
+    create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wkyc.member.api.domain.MemberPurchaseRecord">
+    update member_purchase_record
+    <set>
+      <if test="memberCardId != null">
+        member_card_id = #{memberCardId,jdbcType=BIGINT},
+      </if>
+      <if test="memberCardName != null">
+        member_card_name = #{memberCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionSerialNumber != null">
+        transaction_serial_number = #{transactionSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradeStatus != null">
+        trade_status = #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommendUserId != null">
+        recommend_user_id = #{recommendUserId,jdbcType=BIGINT},
+      </if>
+      <if test="recommendUserName != null">
+        recommend_user_name = #{recommendUserName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from member_purchase_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from member_purchase_record
+  </select>
+
+
+
+
+  <select id="selectByPagination" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from member_purchase_record
+    <where>
+      <if test="memberCardName != null" >
+        AND member_card_name = #{memberCardName}
+      </if>
+      <if test="payStatus != null" >
+        AND pay_status = #{payStatus}
+      </if>
+      <if test="tradeStatus != null" >
+        AND trade_status = #{tradeStatus}
+      </if>
+      <if test="transactionSerialNumber != null" >
+        AND transaction_serial_number = #{transactionSerialNumber}
+      </if>
+      <if test="userPhone != null" >
+        AND user_phone = #{userPhone}
+      </if>
+    </where>
+    ORDER BY create_time DESC
+    limit #{start},#{pageSize}
+  </select>
+
+  <select id="countByPagination" resultType="java.lang.Long">
+    select count(1)
+    from member_purchase_record
+    <where>
+      <if test="memberCardName != null" >
+        AND member_card_name = #{memberCardName}
+      </if>
+      <if test="payStatus != null" >
+        AND pay_status = #{payStatus}
+      </if>
+      <if test="tradeStatus != null" >
+        AND trade_status = #{tradeStatus}
+      </if>
+      <if test="transactionSerialNumber != null" >
+        AND transaction_serial_number = #{transactionSerialNumber}
+      </if>
+      <if test="userPhone != null" >
+        AND user_phone = #{userPhone}
+      </if>
+    </where>
+  </select>
+
+  <update id="updateByTSN" parameterType="com.wkyc.member.api.domain.MemberPurchaseRecord">
+    update member_purchase_record
+    <set>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradeStatus != null">
+        trade_status = #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where transaction_serial_number = #{transactionSerialNumber,jdbcType=VARCHAR}
+  </update>
+
+</mapper>
